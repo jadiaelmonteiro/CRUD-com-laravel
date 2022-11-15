@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeriesController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +20,6 @@ Route::get('/', function () {
 
 Route::get('/series', [SeriesController::class, 'index']);
 Route::get('/series/criar', [SeriesController::class, 'create']);
+Route::get('/series/editar/{id}', [SeriesController::class, 'edit']);
 Route::post('/series/salvar', [SeriesController::class, 'store']);
+Route::post('/series/atualizar', [SeriesController::class, 'update']);

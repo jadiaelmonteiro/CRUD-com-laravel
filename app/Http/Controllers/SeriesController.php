@@ -30,6 +30,25 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
+    public function edit($id)
+    {
+
+        $serie = DB::table('series')
+            ->where('id', '=', $id)->get();
+
+        return view('series.update', compact('serie'));
+    }
+
+
+    public function update(Request $request)
+    {
+        $id = $request['id_serie'];
+        $nome = $request['nome_atualizado'];
+        DB::table('series')->where('id', '=', $id)->update(['nome' => $nome]);
+        return redirect('/series');
+    }
+
+
     public function store(Request $request)
     {
         // dd($request->all());
