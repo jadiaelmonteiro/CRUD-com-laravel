@@ -23,3 +23,4 @@ Route::get('/series/criar', [SeriesController::class, 'create']);
 Route::get('/series/editar/{id}', [SeriesController::class, 'edit']);
 Route::post('/series/salvar', [SeriesController::class, 'store']);
 Route::post('/series/atualizar', [SeriesController::class, 'update']);
+Route::get('/series/deletar/{id}', [SeriesController::class, 'destroy']);

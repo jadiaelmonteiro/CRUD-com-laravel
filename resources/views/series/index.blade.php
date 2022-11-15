@@ -4,15 +4,19 @@
     </a>
 
     <ul class="list-group">
-        <div class="row">
-            @foreach ($series as $serie)
-            <li class="list-group-item col-10"> {{$serie->nome}}
-                <span class="text-end col-2">
-                    <a class="btn btn-sm btn-primary" href="/series/editar/{{$serie->id}}">Editar</a>
-                </span>
-            </li>
-            @endforeach
-        </div>
+
+        @foreach ($series as $serie)
+        <li class="list-group-item">
+            <span class="d-flex">
+                {{$serie->nome}}
+            </span>
+            <span class="d-flex">
+                <a class="btn btn-sm btn-primary" href="/series/editar/{{$serie->id}}">Editar</a>
+                <a class="btn btn-sm btn-danger" href="/series/deletar/{{$serie->id}}">Excluir</a>
+            </span>
+        </li>
+        @endforeach
+
     </ul>
 
     <!-- <script>

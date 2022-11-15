@@ -32,7 +32,6 @@ class SeriesController extends Controller
 
     public function edit($id)
     {
-
         $serie = DB::table('series')
             ->where('id', '=', $id)->get();
 
@@ -61,6 +60,12 @@ class SeriesController extends Controller
 
         //acesso direto ao banco, escrevendo sql
         //DB::insert('INSERT INTO series (nome) VALUES (?)', [$nome]);
+        return redirect('/series');
+    }
+
+    public function destroy($id)
+    {
+        DB::table('series')->where('id', '=', $id)->delete();
         return redirect('/series');
     }
 }
