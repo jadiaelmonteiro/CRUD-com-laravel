@@ -15,12 +15,15 @@ use App\Http\Controllers\SeriesController;
 */
 
 Route::get('/', function () {
-    return redirect('/series');
+    return redirect('/series/index');
 });
 
-Route::get('/series', [SeriesController::class, 'index']);
-Route::get('/series/criar', [SeriesController::class, 'create']);
+Route::get('/series/index', [SeriesController::class, 'index'])->name('series.index');
+Route::get('/series/create', [SeriesController::class, 'create'])->name('series.create');
 Route::get('/series/editar/{id}', [SeriesController::class, 'edit']);
-Route::post('/series/salvar', [SeriesController::class, 'store']);
-Route::post('/series/atualizar', [SeriesController::class, 'update']);
+Route::post('/series/store', [SeriesController::class, 'store'])->name('series.store');
+Route::post('/series/update', [SeriesController::class, 'update'])->name('series.update');
 Route::get('/series/deletar/{id}', [SeriesController::class, 'destroy']);
+
+//Usando nomeclaturas da documentação das funcoes
+//Route::resource('/series', SeriesController::class);

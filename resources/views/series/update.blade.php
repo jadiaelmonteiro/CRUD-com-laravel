@@ -1,5 +1,5 @@
 <x-Layout title="Atualizar">
-    <form action="/series/atualizar" method="POST">
+    <form action="{{ route('series.update') }}" method="POST">
         @csrf
         <input type="hidden" id="id_serie" name="id_serie" value="{{$serie[0]->id}}"></input>
         <div class="mb-2">

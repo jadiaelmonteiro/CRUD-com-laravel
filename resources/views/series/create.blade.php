@@ -1,5 +1,5 @@
 <x-Layout title="Criar">
-    <form action="/series/salvar" method="POST">
+    <form action="{{ route('series.store') }}" method="POST">
         @csrf
         <div class="mb-2">
             <label class="form-label" for="nome">Nome:</label>

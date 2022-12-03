@@ -1,6 +1,6 @@
 <x-Layout title="Séries">
 
-    <a class="btn btn-dark btn-sm mb-2" href="/series/criar">Cadastrar
+    <a class="btn btn-dark btn-sm mb-2" href="{{ route('series.create') }}">Cadastrar
     </a>
 
     <ul class="list-group">

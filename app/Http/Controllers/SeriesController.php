@@ -44,7 +44,7 @@ class SeriesController extends Controller
         $id = $request['id_serie'];
         $nome = $request['nome_atualizado'];
         DB::table('series')->where('id', '=', $id)->update(['nome' => $nome]);
-        return redirect('/series');
+        return to_route('series.index');
     }
 
 
@@ -60,12 +60,12 @@ class SeriesController extends Controller
 
         //acesso direto ao banco, escrevendo sql
         //DB::insert('INSERT INTO series (nome) VALUES (?)', [$nome]);
-        return redirect('/series');
+        return to_route('series.index');
     }
 
     public function destroy($id)
     {
         DB::table('series')->where('id', '=', $id)->delete();
-        return redirect('/series');
+        return to_route('series.index');
     }
 }
