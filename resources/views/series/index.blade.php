@@ -6,17 +6,18 @@
     <ul class="list-group">
 
         @foreach ($series as $serie)
-        <li class="list-group-item">
-            <span class="d-flex">
-                {{$serie->nome}}
-            </span>
-            <span class="d-flex">
-                <a class="btn btn-sm btn-primary" href="/series/editar/{{$serie->id}}">Editar</a>
-                <a class="btn btn-sm btn-danger" href="/series/deletar/{{$serie->id}}">Excluir</a>
-            </span>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+
+            {{$serie->nome}}
+
+            <form action="{{ route('series.destroy', $serie->id)}}" method="POST" >
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-sm btn-danger">Excluir</button>
+            </form>
+
         </li>
         @endforeach
-
     </ul>
 
     <!-- <script>

@@ -18,14 +18,18 @@ Route::get('/', function () {
     return redirect('/series/index');
 });
 
+//Route::resource('/series', SeriesController::class)->only(['index, create, store']);
 Route::controller(SeriesController::class)->group(function() {
 
     Route::get('/series/index', 'index')->name('series.index');
     Route::get('/series/create', 'create')->name('series.create');
-    Route::get('/series/editar/{id}', 'edit');
     Route::post('/series/store', 'store')->name('series.store');
+    Route::get('/series/editar/{id}', 'edit');
     Route::post('/series/update', 'update')->name('series.update');
-    Route::get('/series/deletar/{id}', 'destroy');
+    //Route::get('/series/deletar/{id}', 'destroy');
+    Route::delete('/series/deletar/{id}', 'destroy')->name('series.destroy');
+
+    
 });
 
 //Usando nomeclaturas da documentação das funcoes

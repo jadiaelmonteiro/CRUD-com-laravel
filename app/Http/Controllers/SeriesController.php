@@ -63,9 +63,10 @@ class SeriesController extends Controller
         return to_route('series.index');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        DB::table('series')->where('id', '=', $id)->delete();
+        //DB::table('series')->where('id', '=', $request->id)->delete();
+        Serie::destroy($request->id);
         return to_route('series.index');
     }
 }
