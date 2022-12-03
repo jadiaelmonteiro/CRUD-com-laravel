@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
         //acesso direto ao banco, escrevendo sql
@@ -21,13 +21,19 @@ class SeriesController extends Controller
 
         //utilizando com uma querey mais complexa ordenando pelo nome
         $series = Serie::query()->orderBy('nome')->get();
+        $mensagemSucesso = $request->session()->get('mensagem.sucesso');
+        $request->session()->forget('mensagem.sucesso');
 
-        return view('series.index', compact('series'));
+
+        return view('series.index')->with('series', $series)->with('mensagemSucesso', $mensagemSucesso);
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('series.create');
+        $mensagemSucesso = $request->session()->put('mensagem.sucesso', 'Serie criada com sucesso');
+        $request->session()->forget('mensagemSucesso');
+
+        return view('series.create')->with('mensagemSucesso', $mensagemSucesso);
     }
 
     public function edit($id)
@@ -67,6 +73,7 @@ class SeriesController extends Controller
     {
         //DB::table('series')->where('id', '=', $request->id)->delete();
         Serie::destroy($request->id);
+        $request->session()->put('mensagem.sucesso', 'Serie removida com sucesso');
         return to_route('series.index');
     }
 }

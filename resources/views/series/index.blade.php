@@ -3,6 +3,12 @@
     <a class="btn btn-dark btn-sm mb-2" href="{{ route('series.create') }}">Cadastrar
     </a>
 
+    @isset($mensagemSucesso)
+    <div class="alert alert-success">
+        {{ $mensagemSucesso }}
+    </div>
+    @endisset
+
     <ul class="list-group">
 
         @foreach ($series as $serie)
