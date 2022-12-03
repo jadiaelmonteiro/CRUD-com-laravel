@@ -18,12 +18,15 @@ Route::get('/', function () {
     return redirect('/series/index');
 });
 
-Route::get('/series/index', [SeriesController::class, 'index'])->name('series.index');
-Route::get('/series/create', [SeriesController::class, 'create'])->name('series.create');
-Route::get('/series/editar/{id}', [SeriesController::class, 'edit']);
-Route::post('/series/store', [SeriesController::class, 'store'])->name('series.store');
-Route::post('/series/update', [SeriesController::class, 'update'])->name('series.update');
-Route::get('/series/deletar/{id}', [SeriesController::class, 'destroy']);
+Route::controller(SeriesController::class)->group(function() {
+
+    Route::get('/series/index', 'index')->name('series.index');
+    Route::get('/series/create', 'create')->name('series.create');
+    Route::get('/series/editar/{id}', 'edit');
+    Route::post('/series/store', 'store')->name('series.store');
+    Route::post('/series/update', 'update')->name('series.update');
+    Route::get('/series/deletar/{id}', 'destroy');
+});
 
 //Usando nomeclaturas da documentação das funcoes
 //Route::resource('/series', SeriesController::class);
