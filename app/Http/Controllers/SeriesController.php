@@ -58,6 +58,9 @@ class SeriesController extends Controller
     {
         // dd($request->all());
         // $nome = $request->nome;
+        $request->validate([
+            'nome' => ['required', 'min:3']
+        ]);
         Serie::create($request->all());
 
         // $serie = new Serie;
