@@ -28,12 +28,9 @@ class SeriesController extends Controller
         return view('series.index')->with('series', $series)->with('mensagemSucesso', $mensagemSucesso);
     }
 
-    public function create(Request $request)
+    public function create()
     {
-        $mensagemSucesso = $request->session()->put('mensagem.sucesso', 'Serie criada com sucesso');
-        $request->session()->forget('mensagemSucesso');
-
-        return view('series.create')->with('mensagemSucesso', $mensagemSucesso);
+        return view('series.create');
     }
 
     public function edit($id)
@@ -66,14 +63,18 @@ class SeriesController extends Controller
 
         //acesso direto ao banco, escrevendo sql
         //DB::insert('INSERT INTO series (nome) VALUES (?)', [$nome]);
+
+        $request->session()->put('mensagem.sucesso', "Serie '{$request->nome}' criada com sucesso");
+        $request->session()->forget('mensagemSucesso');
         return to_route('series.index');
     }
 
     public function destroy(Request $request)
     {
         //DB::table('series')->where('id', '=', $request->id)->delete();
+        $serie = Serie::find($request->id); // procura algo pelo id e retorna todo o valor
         Serie::destroy($request->id);
-        $request->session()->put('mensagem.sucesso', 'Serie removida com sucesso');
+        $request->session()->put('mensagem.sucesso', "Serie '{$serie->nome}' removida com sucesso");
         return to_route('series.index');
     }
 }
