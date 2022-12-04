@@ -1,9 +1,9 @@
 <form action="{{ $action }}" method="POST">
     @csrf
 
-    @isset($nome)
+    @if($update)
     @method('PUT')
-    @endisset
+    @endif
 
     @isset($id)
     <input type="hidden" value="{{ $id }}" name="id">

@@ -1,3 +1,3 @@
-<x-Layout title="Criar">
-    <x-series.form :action="route('series.store')"/>
+<x-Layout title="Nova série">
+    <x-series.form :action="route('series.store')" :nome="old('nome')" :update="false"/>
 </x-Layout>
