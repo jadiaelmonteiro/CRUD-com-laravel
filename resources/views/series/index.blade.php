@@ -16,10 +16,15 @@
 
             {{$serie->nome}}
 
-            <form action="{{ route('series.destroy', $serie->id)}}" method="POST" >
+            <form action="{{ route('series.destroy', $serie->id )}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-sm btn-danger">Excluir</button>
+            </form>
+
+            <form action="{{ route('series.editar', $serie->id )}}" method="GET">
+                @csrf
+                <button class="btn btn-sm btn-primary">Editar</button>
             </form>
 
         </li>

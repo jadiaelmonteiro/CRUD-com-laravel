@@ -22,7 +22,7 @@ class SeriesController extends Controller
         //utilizando com uma querey mais complexa ordenando pelo nome
         $series = Serie::query()->orderBy('nome')->get();
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
-        $request->session()->forget('mensagem.sucesso');
+        //$request->session()->forget('mensagem.sucesso');
 
 
         return view('series.index')->with('series', $series)->with('mensagemSucesso', $mensagemSucesso);
@@ -47,7 +47,8 @@ class SeriesController extends Controller
         $id = $request['id_serie'];
         $nome = $request['nome_atualizado'];
         DB::table('series')->where('id', '=', $id)->update(['nome' => $nome]);
-        return to_route('series.index');
+        
+        return to_route('series.index')->with('mensagem.sucesso', "Serie '{$nome}' atualizada!");
     }
 
 
@@ -64,9 +65,9 @@ class SeriesController extends Controller
         //acesso direto ao banco, escrevendo sql
         //DB::insert('INSERT INTO series (nome) VALUES (?)', [$nome]);
 
-        $request->session()->put('mensagem.sucesso', "Serie '{$request->nome}' criada com sucesso");
-        $request->session()->forget('mensagemSucesso');
-        return to_route('series.index');
+        //$request->session()->put('mensagem.sucesso', "Serie '{$request->nome}' criada com sucesso");
+        //$request->session()->forget('mensagemSucesso');
+        return to_route('series.index')->with('mensagem.sucesso', "Serie '{$request->nome}' adicionada com sucesso");
     }
 
     public function destroy(Request $request)
@@ -74,7 +75,7 @@ class SeriesController extends Controller
         //DB::table('series')->where('id', '=', $request->id)->delete();
         $serie = Serie::find($request->id); // procura algo pelo id e retorna todo o valor
         Serie::destroy($request->id);
-        $request->session()->put('mensagem.sucesso', "Serie '{$serie->nome}' removida com sucesso");
-        return to_route('series.index');
+        //$request->session()->put('mensagem.sucesso', "Serie '{$serie->nome}' removida com sucesso"); forma de criar variaveis de sessoes
+        return to_route('series.index')->with('mensagem.sucesso', "Serie '{$serie->nome}' removida com sucesso");//with funciona como session flash
     }
 }
