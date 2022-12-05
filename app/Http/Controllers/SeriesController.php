@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $series = Serie::all();
         $mensagemSucesso = session('mensagem.sucesso');
@@ -43,7 +43,7 @@ class SeriesController extends Controller
 
     public function edit(Serie $series)
     {
-        dd($series->temporadas);
+ 
         return view('series.edit')->with('serie', $series);
     }
 
