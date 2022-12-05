@@ -19,18 +19,21 @@ Route::get('/', function () {
 });
 
 //Route::resource('/series', SeriesController::class)->only(['index, create, store']);
-Route::controller(SeriesController::class)->group(function() {
+// Route::controller(SeriesController::class)->group(function() {
 
-    Route::get('/series/index', 'index')->name('series.index');
-    Route::get('/series/create', 'create')->name('series.create');
-    Route::post('/series/store', 'store')->name('series.store');
-    Route::get('/series/editar/{id}', 'edit')->name('series.editar');
-    Route::put('/series/update', 'update')->name('series.update');
-    //Route::get('/series/deletar/{id}', 'destroy');
-    Route::delete('/series/deletar/{id}', 'destroy')->name('series.destroy');
+//     Route::get('/series/index', 'index')->name('series.index');
+//     Route::get('/series/create', 'create')->name('series.create');
+//     Route::post('/series/store', 'store')->name('series.store');
+//     Route::get('/series/editar/{id}', 'edit')->name('series.editar');
+//     Route::put('/series/update', 'update')->name('series.update');
+//     //Route::get('/series/deletar/{id}', 'destroy');
+//     Route::delete('/series/deletar/{id}', 'destroy')->name('series.destroy');
 
     
-});
+// });
+
+Route::resource('/series', SeriesController::class)
+    ->except(['show']);
 
 //Usando nomeclaturas da documentação das funcoes
 //Route::resource('/series', SeriesController::class);

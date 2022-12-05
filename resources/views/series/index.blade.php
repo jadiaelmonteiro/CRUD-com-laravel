@@ -16,7 +16,7 @@
 
             {{$serie->nome}}
             <div class="d-flex">
-                <a class="btn btn-sm btn-primary" href="{{ route('series.editar', $serie->id )}}">Editar</a>
+                <a class="btn btn-sm btn-primary" href="{{ route('series.edit', $serie->id )}}">Editar</a>
 
                 <form action="{{ route('series.destroy', $serie->id )}}" method="POST" class="ms-2">
                     @csrf
