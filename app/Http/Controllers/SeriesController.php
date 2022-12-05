@@ -43,6 +43,7 @@ class SeriesController extends Controller
 
     public function edit(Serie $series)
     {
+        dd($series->temporadas);
         return view('series.edit')->with('serie', $series);
     }
 
@@ -55,6 +56,7 @@ class SeriesController extends Controller
         return to_route('series.index')
             ->with('mensagem.sucesso', "Série '{$series->nome}' atualizada com sucesso");
     }
+
     // public function index(Request $request)
     // {
 
