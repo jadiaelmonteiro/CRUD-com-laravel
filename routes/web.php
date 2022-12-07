@@ -15,7 +15,7 @@ use App\Http\Controllers\SeriesController;
 */
 
 Route::get('/', function () {
-    return redirect('/series/index');
+    return redirect('/series');
 });
 
 //Route::resource('/series', SeriesController::class)->only(['index, create, store']);
