@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeasonController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeriesController;
 
@@ -18,6 +19,11 @@ Route::get('/', function () {
     return redirect('/series');
 });
 
+Route::resource('/series', SeriesController::class)
+    ->except(['show']);
+
+Route::get('/series/{series}/seasons', [SeasonController::class, 'index'])->name('seasons.index');
+
 //Route::resource('/series', SeriesController::class)->only(['index, create, store']);
 // Route::controller(SeriesController::class)->group(function() {
 
@@ -31,9 +37,6 @@ Route::get('/', function () {
 
     
 // });
-
-Route::resource('/series', SeriesController::class)
-    ->except(['show']);
 
 //Usando nomeclaturas da documentação das funcoes
 //Route::resource('/series', SeriesController::class);
