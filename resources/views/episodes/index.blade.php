@@ -8,7 +8,10 @@
 
                 Episódio {{$episode->number}}
 
-                <input type="checkbox" name="episodes[]" value="{{ $episode->id }}">
+                <input type="checkbox" 
+                       name="episodes[]" 
+                       value="{{ $episode->id }}"
+                       @if ($episode->watched) checked @endif />
             </li>
             @endforeach
         </ul>
