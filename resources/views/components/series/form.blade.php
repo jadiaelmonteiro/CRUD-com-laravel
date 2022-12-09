@@ -1,4 +1,4 @@
-<form action="{{ $action }}" method="post">
+<form action="{{ $action }}" method="post" :mensagem-sucesso="$mensagemSucesso">
     @csrf
 
     @if($update)
