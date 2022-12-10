@@ -13,5 +13,7 @@
 
         <button class="btn btn-dark btn-sm mt-3">Entrar</button>
 
+        <a href="{{ route('user.create') }}" class="btn btn-dark btn-sm mt-3">Criar Login</a>
+
     </form>
 </x-Layout>
