@@ -62,10 +62,12 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 
     Route::get('/seasons/{season}/episodes', [EpisodesController::class, 'index'])->name('episodes.index');
+    
     Route::post('/seasons/{season}/episodes', [EpisodesController::class, 'update'])->name('episodes.update');
+    
     Route::get('/', function () {
         return redirect('/series');
-    })->middleware(Autenticador::class);
+    });
 
     Route::resource('/series', SeriesController::class)
         ->except(['show']);
