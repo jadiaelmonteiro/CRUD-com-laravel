@@ -18,8 +18,14 @@ class SeriesCreated extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(
+        public string $nomeSerie,
+        public int $idSerie,
+        public int $qtdTemporadas,
+        public int $episodiosPorTemporada,
+        )
     {
+
     }
 
     /**
@@ -42,12 +48,7 @@ class SeriesCreated extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'mail.series-created',
-            with: [
-                'nomeSerie' => 'Jadiael é o cara',
-                'qtdTemporadas' => 5,
-                'episodiosPorTemporada' => 10
-            ],
+            markdown: 'mail.series-created'
         );
     }
 

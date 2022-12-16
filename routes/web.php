@@ -18,7 +18,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/email', function () {
-    return new SeriesCreated();
+    return new SeriesCreated(
+        "Jadiael é o cara",
+        12, 
+        10, 
+        5,);
 });
 
 require __DIR__.'/auth.php';
