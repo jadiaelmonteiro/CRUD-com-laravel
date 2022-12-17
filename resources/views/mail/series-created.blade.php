@@ -1,8 +1,8 @@
 @component('mail::message')
 
-#  Criada
+#  Criação de série: {{$nomeSerie}}
 
-A série de nome {{$nomeSerie}} com {{$qtdTemporadas}} temporadas e {{$episodiosPorTemporada}} episódios.
+A série de nome {{$nomeSerie}} com {{$qtdTemporadas}} temporadas e {{$episodiosPorTemporada}} episódios foi criada.
 
 Acesse aqui: 
 

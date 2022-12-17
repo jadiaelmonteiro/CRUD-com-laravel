@@ -39,7 +39,7 @@ class SeriesController extends Controller
 
         $usersAll = User::all();
         
-        foreach($usersAll as $user) {
+        foreach($usersAll as $key => $user) {
 
             $email = new SeriesCreated(
                 $serie->nome,
@@ -48,8 +48,8 @@ class SeriesController extends Controller
                 $request->episodesPerSeason,
             );
 
-            Mail::to($user)->send($email);
-            sleep(2);
+            $when = now()->addSeconds($key * 5);
+            Mail::to($user)->later($when, $email);
         }
 
 
