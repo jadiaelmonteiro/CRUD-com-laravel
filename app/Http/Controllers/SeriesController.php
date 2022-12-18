@@ -32,6 +32,7 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {
+        dd($request->cover);
         $serie = $this->repository->add($request);
 
         $seriesCreatedEvent = new SeriesCreated(
